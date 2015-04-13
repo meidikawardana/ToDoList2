@@ -59,21 +59,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New to-do item" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K3B-eD-wh5">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Aq-ma-Zaf">
                                 <rect key="frame" x="16" y="285" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="textField:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="vBR-wW-fHl"/>
-                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="K3B-eD-wh5" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="0JD-Ad-VCc"/>
-                            <constraint firstAttribute="centerX" secondItem="K3B-eD-wh5" secondAttribute="centerX" id="7f3-xl-KzP"/>
-                            <constraint firstAttribute="centerY" secondItem="K3B-eD-wh5" secondAttribute="centerY" id="nFW-d4-pwU"/>
-                            <constraint firstItem="K3B-eD-wh5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="vso-lt-bBw"/>
+                            <constraint firstAttribute="centerY" secondItem="5Aq-ma-Zaf" secondAttribute="centerY" id="JYc-hg-k9I"/>
+                            <constraint firstAttribute="centerX" secondItem="5Aq-ma-Zaf" secondAttribute="centerX" id="hNz-w5-OdU"/>
+                            <constraint firstItem="5Aq-ma-Zaf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ivH-re-SXL"/>
+                            <constraint firstItem="5Aq-ma-Zaf" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="lBN-kT-fby"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add To-Do Item" id="ATF-ST-W2e">
@@ -89,8 +86,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="saveButton" destination="K3B-eD-wh5" id="7rc-XE-1NG"/>
-                        <outlet property="textField" destination="K3B-eD-wh5" id="9aw-PJ-HY3"/>
+                        <outlet property="saveButton" destination="RkF-JA-cma" id="hrT-Ba-wo7"/>
+                        <outlet property="textField" destination="5Aq-ma-Zaf" id="R2G-TL-Upy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
