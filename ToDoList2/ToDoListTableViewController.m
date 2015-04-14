@@ -65,14 +65,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListPrototypeCell" forIndexPath:indexPath];
     
-    ToDoItem *toDoItem = [self.toDoItems objectAtIndex:indexPath.row];
-    cell.textLabel.text = toDoItem.itemName;
-    
-    if (toDoItem.completed) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    } else {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
+//    ToDoItem *toDoItem = [self.toDoItems objectAtIndex:indexPath.row];
+//    cell.textLabel.text = toDoItem.itemName;
+//    
+//    if (toDoItem.completed) {
+//        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//    } else {
+//        cell.accessoryType = UITableViewCellAccessoryNone;
+//    }
     
     return cell;
 }
