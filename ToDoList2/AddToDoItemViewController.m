@@ -9,8 +9,9 @@
 #import "AddToDoItemViewController.h"
 
 @interface AddToDoItemViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *textField;
+//@property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 
 @end
 
@@ -33,9 +34,9 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if (sender != self.saveButton) return;
-    if (self.textField.text.length > 0) {
+    if (self.textView.text.length > 0) {
         self.toDoItem = [[ToDoItem alloc] init];
-        self.toDoItem.itemName = self.textField.text;
+        self.toDoItem.itemName = self.textView.text;
         self.toDoItem.completed = NO;
     }
 }

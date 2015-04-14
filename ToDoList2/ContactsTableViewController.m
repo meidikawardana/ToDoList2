@@ -1,49 +1,38 @@
 //
-//  ToDoListTableViewController.m
+//  ContactsTableViewController.m
 //  ToDoList2
 //
-//  Created by Meidika Wardana on 4/13/15.
+//  Created by Meidika Wardana on 4/14/15.
 //  Copyright (c) 2015 BEI5000. All rights reserved.
 //
 
-#import "ToDoListTableViewController.h"
-#import "ToDoItem.h"
+#import "ContactsTableViewController.h"
+#import "CustomCell.h"
 #import "AddToDoItemViewController.h"
 
-@interface ToDoListTableViewController ()
-
-@property NSMutableArray *toDoItems;
-
+@interface ContactsTableViewController ()
+    @property NSMutableArray *toDoItems;
+    @property (nonatomic, strong) NSArray *contactsArray;
+    @property (nonatomic, strong) NSDictionary *contact;
 @end
 
-@implementation ToDoListTableViewController
+@implementation ContactsTableViewController
 
-- (void)loadInitialData {
-    ToDoItem *item1 = [[ToDoItem alloc] init];
-    item1.itemName = @"Buy milk";
-    [self.toDoItems addObject:item1];
-    ToDoItem *item2 = [[ToDoItem alloc] init];
-    item2.itemName = @"Buy eggs";
-    [self.toDoItems addObject:item2];
-    ToDoItem *item3 = [[ToDoItem alloc] init];
-    item3.itemName = @"Read a book";
-    [self.toDoItems addObject:item3];
-}
+@synthesize contactsArray,contact;
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue {
-    AddToDoItemViewController *source = [segue sourceViewController];
-    ToDoItem *item = source.toDoItem;
-    if (item != nil) {
-        [self.toDoItems addObject:item];
-        [self.tableView reloadData];
-    }
+//    AddToDoItemViewController *source = [segue sourceViewController];
+//    ToDoItem *item = source.toDoItem;
+//    if (item != nil) {
+//        [self.toDoItems addObject:item];
+//        [self.tableView reloadData];
+//    }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.toDoItems = [[NSMutableArray alloc] init];
-    [self loadInitialData];
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"contacts" ofType:@"plist"];
+    contactsArray = [NSArray arrayWithContentsOfFile:path];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,28 +43,36 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.toDoItems count];
+    return [contactsArray count];
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListPrototypeCell" forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"ListPrototypeCell";
+    CustomCell *customCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    ToDoItem *toDoItem = [self.toDoItems objectAtIndex:indexPath.row];
-    cell.textLabel.text = toDoItem.itemName;
+    // Configure the cell...
     
-    if (toDoItem.completed) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    } else {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
+    contact = contactsArray[indexPath.row];
     
-    return cell;
+    NSString *firstName = contact[@"firstName"];
+    NSString *lastName = contact[@"lastName"];
+    NSString *imageName = contact[@"imageName"];
+    
+    UIImage *image = [UIImage imageNamed:imageName];
+    
+    customCell.customFirstNameLabel.text = firstName;
+    customCell.customLastNameLabel.text = lastName;
+    customCell.customImageView.image = image;
+    
+    
+    return customCell;
 }
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -120,12 +117,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-#pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    ToDoItem *tappedItem = [self.toDoItems objectAtIndex:indexPath.row];
-    tappedItem.completed = !tappedItem.completed;
-    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-}
 @end

@@ -5,34 +5,41 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--To-Do List-->
+        <!--Feeds-->
         <scene sceneID="2PY-nP-5qO">
             <objects>
-                <tableViewController id="QVc-2M-xzI" customClass="ToDoListTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="7W2-7T-Wc3">
+                <tableViewController id="QVc-2M-xzI" customClass="ContactsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" id="7W2-7T-Wc3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ListPrototypeCell" textLabel="V5G-Fc-ziD" detailTextLabel="6fY-RD-k3d" style="IBUITableViewCellStyleSubtitle" id="oxW-7h-iMR">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ListPrototypeCell" id="oxW-7h-iMR" customClass="CustomCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oxW-7h-iMR" id="Ats-0m-CE1">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Mow the lawn" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V5G-Fc-ziD">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBB-tO-sv5">
+                                            <rect key="frame" x="74" y="40" width="133" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6fY-RD-k3d">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qlu-BG-PRI">
+                                            <rect key="frame" x="16" y="8" width="50" height="50"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltT-uo-FcM">
+                                            <rect key="frame" x="74" y="8" width="225" height="38"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="customFirstNameLabel" destination="ltT-uo-FcM" id="f4x-Ma-Ik6"/>
+                                    <outlet property="customImageView" destination="qlu-BG-PRI" id="9da-PT-hw1"/>
+                                    <outlet property="customLastNameLabel" destination="MBB-tO-sv5" id="ihn-N1-3fC"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -41,7 +48,7 @@
                             <outlet property="delegate" destination="QVc-2M-xzI" id="QMD-mi-x2X"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="To-Do List" id="mgU-kT-M8N">
+                    <navigationItem key="navigationItem" title="Feeds" id="mgU-kT-M8N">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="XkB-iU-tWT">
                             <connections>
                                 <segue destination="J1t-Qw-Pua" kind="presentation" id="v1o-pn-gLk"/>
@@ -53,7 +60,7 @@
             </objects>
             <point key="canvasLocation" x="507" y="177"/>
         </scene>
-        <!--Add To-Do Item-->
+        <!--Post-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="AddToDoItemViewController" sceneMemberID="viewController">
@@ -65,24 +72,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Aq-ma-Zaf">
-                                <rect key="frame" x="16" y="285" width="568" height="30"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JtD-fq-KE8">
+                                <rect key="frame" x="16" y="72" width="568" height="373"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="5Aq-ma-Zaf" secondAttribute="centerY" id="JYc-hg-k9I"/>
-                            <constraint firstAttribute="centerX" secondItem="5Aq-ma-Zaf" secondAttribute="centerX" id="hNz-w5-OdU"/>
-                            <constraint firstItem="5Aq-ma-Zaf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ivH-re-SXL"/>
-                            <constraint firstItem="5Aq-ma-Zaf" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="lBN-kT-fby"/>
+                            <constraint firstItem="JtD-fq-KE8" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="XYm-BS-IfY"/>
+                            <constraint firstItem="JtD-fq-KE8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="xie-1b-bAV"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Add To-Do Item" id="ATF-ST-W2e">
+                    <navigationItem key="navigationItem" title="Post" id="ATF-ST-W2e">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="YQ2-WH-4FN">
                             <connections>
-                                <segue destination="twc-Bc-T5T" kind="unwind" unwindAction="unwindToList:" id="CIp-re-E5y"/>
+                                <segue destination="twc-Bc-T5T" kind="unwind" unwindAction="unwindToList:" id="jgy-Op-jA6"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="RkF-JA-cma">
@@ -93,7 +99,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="saveButton" destination="RkF-JA-cma" id="hrT-Ba-wo7"/>
-                        <outlet property="textField" destination="5Aq-ma-Zaf" id="R2G-TL-Upy"/>
+                        <outlet property="textView" destination="JtD-fq-KE8" id="Yle-KW-3jo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
